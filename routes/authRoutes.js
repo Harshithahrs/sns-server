@@ -28,7 +28,7 @@ async function mailer(recieveremail, code) {
 	});
 
 	let info = await transporter.sendMail({
-		from: "SMA",
+		from: "SNS",
 		to: `${recieveremail}`,
 		subject: "Email Verification",
 		text: `Your Verification Code is ${code}`,
@@ -39,6 +39,7 @@ async function mailer(recieveremail, code) {
 	console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
 }
 
+//verify emailid
 router.post("/verify", (req, res) => {
 	console.log("sent by client", req.body);
 	const { email } = req.body;
@@ -136,6 +137,7 @@ router.post("/verifyfp", (req, res) => {
 	});
 });
 
+//reset password
 router.post("/resetpassword", (req, res) => {
 	const { email, password } = req.body;
 
